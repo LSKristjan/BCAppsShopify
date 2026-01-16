@@ -425,4 +425,14 @@ codeunit 30177 "Shpfy Product Events"
     internal procedure OnAfterProductsToSynchronizeFiltersSet(var ShopifyProduct: Record "Shpfy Product"; Shop: Record "Shpfy Shop"; OnlyUpdatePrice: Boolean)
     begin
     end;
+
+    [IntegrationEvent(false, false)]
+    internal procedure OnAfterUpdateProductImage(ProductId: Text; ImageId: Text)
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    internal procedure OnAfterUpdateProductData(var ShopifyProduct: Record "Shpfy Product"; Shop: Record "Shpfy Shop")
+    begin
+    end;
 }

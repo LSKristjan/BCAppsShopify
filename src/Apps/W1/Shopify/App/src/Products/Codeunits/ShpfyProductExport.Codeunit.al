@@ -756,7 +756,9 @@ codeunit 30178 "Shpfy Product Export"
 
             if Shop."Product Metafields To Shopify" then
                 UpdateMetafields(ShopifyProduct.Id);
-            UpdateProductTranslations(ShopifyProduct.Id, Item)
+            UpdateProductTranslations(ShopifyProduct.Id, Item);
+
+            ProductEvents.OnAfterUpdateProductData(ShopifyProduct, Shop);        
         end;
     end;
 

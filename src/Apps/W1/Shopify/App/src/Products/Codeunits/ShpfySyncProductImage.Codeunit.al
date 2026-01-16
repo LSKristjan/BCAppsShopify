@@ -63,7 +63,9 @@ codeunit 30184 "Shpfy Sync Product Image"
             if not BulkOperationMgt.SendBulkMutation(Shop, BulkOperationType::UpdateProductImage, BulkOperationInput.ToText(), JRequestData) then begin
                 ParametersList := ProductImageExport.GetParametersList();
                 foreach Parameters in ParametersList do
-                    if not ProductAPI.UpdateProductImage(Parameters) then
+                    if ProductAPI.UpdateProductImage(Parameters) then
+                        ProductEvents.OnAfterUpdateProductImage(Parameters.Get('ProductId'), Parameters.Get('ImageId'))
+                    else
                         RevertProductImageChanges(Parameters.Get('ProductId'), JRequestData);
             end;
     end;
