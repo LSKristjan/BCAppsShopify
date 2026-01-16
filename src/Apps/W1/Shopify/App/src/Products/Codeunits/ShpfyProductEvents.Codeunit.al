@@ -426,11 +426,21 @@ codeunit 30177 "Shpfy Product Events"
     begin
     end;
 
+    /// <summary>
+    /// Raised after product image has been exported to Shopify to add any extra images (without sending the same image again)
+    /// </summary>
+    /// <param name="ProductId">The Shopify product Id.</param>
+    /// <param name="ImageId">The Shopify image Id.</param>
     [IntegrationEvent(false, false)]
     internal procedure OnAfterUpdateProductImage(ProductId: Text; ImageId: Text)
     begin
     end;
 
+    /// <summary>
+    /// Raised after product data has been exported to Shopify to be able to process any extra data for the product
+    /// </summary>
+    /// <param name="ShopifyProduct">Parameter of type Record "Shpfy Product".</param>
+    /// <param name="Shop">Parameter of type Record "Shpfy Shop".</param>
     [IntegrationEvent(false, false)]
     internal procedure OnAfterUpdateProductData(var ShopifyProduct: Record "Shpfy Product"; Shop: Record "Shpfy Shop")
     begin
